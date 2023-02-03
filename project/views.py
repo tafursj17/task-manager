@@ -4,8 +4,9 @@ from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.auth import login, logout
 from django.contrib.auth import authenticate
+from django.contrib.auth.models import User
 
-from .form import RegisterForm
+from .forms import RegisterForm
 
 def index(request):
     return render(request, 'index.html',{
@@ -36,7 +37,24 @@ def logout_view(request):
     return redirect('login')
 
 def register(request):
-    form = RegisterForm()
-    return render(request, 'users/register.html', {
-        'form': form,
-    })
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        password1 = request.POST.get('password1')
+        password2 = request.POST.get('password2')
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            user = authenticate(username = form.cleaned_data['username'] , password = form.cleaned_data['password1'] )
+            login(request, user)
+            messages.success(request, f'{ username } registrado con exitó')
+            return redirect('index')
+        
+        else: 
+            messages.error(request, 'Usuario o Contraseña incorrectos')
+        
+    else:
+        form= RegisterForm()
+        
+    context = {'form' : form} 
+    return render(request, 'users/register.html', context)
