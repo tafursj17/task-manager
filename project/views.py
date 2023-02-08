@@ -9,8 +9,9 @@ from django.contrib.auth.models import User
 from .forms import RegisterForm
 
 def index(request):
+    title = 'Index'
     return render(request, 'index.html',{
-
+        'title': title
     })
 
 def login_view(request): 
