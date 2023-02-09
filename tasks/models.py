@@ -12,15 +12,14 @@ class Project(models.Model):
 class Task(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True)
-    done = models.BooleanField(default=False)
     important = models.BooleanField(default=False)
 
     datecompleted = models.DateTimeField(null=True, blank=True)
     created = models.DateTimeField(auto_now=True)
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    # project = models.ForeignKey(Project, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.title + ' - ' + self.project.name
+        return self.title 
 

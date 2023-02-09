@@ -1,56 +1,64 @@
 {% extends 'base.html' %}
 
 {% block content %}
-            <div class="col">
-                <h2>Registro</h2>
-                <form class="needs-validation" method="post" novalidate>
-                    {% csrf_token %}
-                    <div class="form-row ">
-                        <div class="form-group col-md-12">
-                            <label for="">Nombre De Usuario:</label>
-                            <input type="text" class="form-control" id="Usuario" placeholder="" required required
-                                maxlength="16" minlength="8" name="username">
-                            <div class="valid-feedback">¡Correcto!</div>
-                            <div class="invalid-feedback">Usuario no válido</div>
-                        </div>
+<main class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4 mt-5">
+
+          <div class="card card-body">
+            <h2>Registro</h2>
+
+            <form class="needs-validation" method="post" novalidate>
+                {% csrf_token %}
+                <div class="form-row ">
+                    <div class="form-group col-md-12">
+                        <label for="">Nombre De Usuario:</label>
+                        <input type="text" class="form-control" id="Usuario" placeholder="" required required
+                            maxlength="16" minlength="6" name="username">
+                        <div class="valid-feedback">¡Correcto!</div>
+                        <div class="invalid-feedback">Usuario no válido</div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label for="Email">Email:</label>
+                        <input type="email" class="form-control" id="Email" placeholder="example@gmail.com"
+                            name="email" required>
+                        <div class="valid-feedback">¡Correcto!</div>
+                        <div class="invalid-feedback">Email no válido</div>
+
                     </div>
 
-                    <div class="form-row">
-                        <div class="form-group col-md-12">
-                            <label for="Email">Email:</label>
-                            <input type="email" class="form-control" id="Email" placeholder="example@gmail.com"
-                                name="email" required>
-                            <div class="valid-feedback">¡Correcto!</div>
-                            <div class="invalid-feedback">Email no válido</div>
+                    <div class="form-group col-md-12 mb-3">
+                        <label for="inputPassword4">Contraseña:</label>
+                        <input type="password" class="form-control" id="password1" placeholder="*********"
+                            name="password1" required required maxlength="14"
+                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" minlength="8">
+                        <div class="valid-feedback">Contraseña Correcta</div>
+                        <div class="invalid-feedback">Contraseña Incorrecta</div>
 
-                        </div>
-
-
-
-                        <div class="form-group col-md-12 mb-3">
-                            <label for="inputPassword4">Contraseña:</label>
-                            <input type="password" class="form-control" id="password1" placeholder="*********"
-                                name="password1" required required maxlength="14"
-                                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" minlength="8">
-                            <div class="valid-feedback">Contraseña Correcta</div>
-                            <div class="invalid-feedback">Contraseña Incorrecta</div>
-
-                        </div>
-
-                        <div class="form-group col-md-12 mb-3">
-                            <label for="inputPassword4">Confirmar Contraseña:</label>
-                            <input type="password" class="form-control" id="password2" placeholder="*********"
-                                name="password2" required maxlength="14" minlength="8"
-                                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
-                            <div class="valid-feedback">Contraseña Correcta</div>
-                            <div class="invalid-feedback">Contraseña Incorrecta</div>
-                        </div>
                     </div>
 
+                    <div class="form-group col-md-12 mb-3">
+                        <label for="inputPassword4">Confirmar Contraseña:</label>
+                        <input type="password" class="form-control" id="password2" placeholder="*********"
+                            name="password2" required maxlength="14" minlength="8"
+                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+                        <div class="valid-feedback">Contraseña Correcta</div>
+                        <div class="invalid-feedback">Contraseña Incorrecta</div>
+                    </div>
+                </div>
 
-                    <button type="submit" class="btn btn-primary">Registrarse</button>
-                    <button type="reset" class="btn btn-danger">Cancelar</button>
-            </div>
+
+                <button type="submit" class="btn btn-primary">Registrarse</button>
+                <button type="reset" class="btn btn-danger">Cancelar</button>
         </div>
-        </form>
+    </div>
+    </form>
+          </div>  
+        </div>
+    </div>
+</main>
+               
 {% endblock %}

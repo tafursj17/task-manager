@@ -2,28 +2,37 @@
 
 {% block content %}
 
-<div class="col">
-    <h2>Inicio de sesión</h2>
 
-    <form method="post">
-        {% csrf_token %}
-        <div class="form-group">
-            <label for="username">Usuario</label>
-            <input type="text" name="username" class="form-control" required>
-            <div class="valid-feedback">¡Correcto!</div>
-            <div class="invalid-feedback">Usuario no válido</div>
-        </div>
-        <div class="form-group">
-            <label for="password">Contraseña</label>
-            <input type="password" name="password" class="form-control" required>
-            <div class="valid-feedback">Contraseña Correcta</div>
-            <div class="invalid-feedback">Contraseña Incorrecta</div>
-        </div>
-        <br>
-        <button type="submit" class="btn btn-primary">Login</button>
-        <button type="reset" class="btn btn-danger">Cancelar</button>
-    </form>
+<main class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4 mt-5">
 
-</div>
+          <div class="card card-body">
+            <h2>Inicio de sesión</h2>
+
+            <form class="needs-validation" method="post" >
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="username">Usuario</label>
+                    <input type="text" name="username" class="form-control" minlength="6" required>
+                    <div class="valid-feedback">¡Correcto!</div>
+                    <div class="invalid-feedback">Usuario no válido</div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input type="password" name="password" class="form-control" required>
+                    <div class="valid-feedback">Contraseña Correcta</div>
+                    <div class="invalid-feedback">Contraseña Incorrecta</div>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary">Login</button>
+                <button type="reset" class="btn btn-danger">Cancelar</button>
+            </form>
+
+          </div>  
+        </div>
+    </div>
+</main>
+
 
 {% endblock %}

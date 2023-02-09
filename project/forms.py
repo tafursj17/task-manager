@@ -11,7 +11,7 @@ class RegisterForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1','password1']
+        fields = ['username', 'email', 'password1','password2']
 
     def clean_username(self):
         username = self.cleaned_data.get('username')

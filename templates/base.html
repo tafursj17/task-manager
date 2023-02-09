@@ -11,36 +11,48 @@
     <title>Document</title>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li> 
-                <a href="{% url 'projects' %}">Projects</a>
-            </li>
-            <li>
-                <a href="{% url 'tasks' %}">Tasks</a>
-            </li>
-            <li>
-                <a href="{% url 'create_project' %}">Create Project</a>
-            </li>
-            <li>
-                <a href="{% url 'create_task' %}">Create Task</a>
-            </li>
-            {% if user.is_authenticated %}
-            <li>
-                <a href="{% url 'logout' %}">Logout</a>
-            </li>
-            {% else %}
-            <li>
-                <a href="{% url 'login' %}">Login</a>
-            </li>
-            {% endif %}
-            <!-- {{ user.username }} -->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container">
+          <a class="navbar-brand" href="{% url 'index' %}">Index</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                {% if user.is_authenticated %}
+                <!-- <li> 
+                    <a href="{% url 'projects' %}">Projects</a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'tasks' %}">Tasks</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'tasks_completed' %}">Tasks Completed</a>
+                </li>
+                <!-- <li>
+                    <a href="{% url 'create_project' %}">Create Project</a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'create_task' %}">Create Task</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register' %}">Register</a>
+                </li>
+                {% endif %}
+                <!-- {{ user.username }} -->
+            </ul>
+          </div>
+        </div>
+      </nav>
 
-        </ul>
-    </nav>
-
-    <div class="container">
-        <div class="row">
+    
 
             {% block content %}
             {% endblock %}
