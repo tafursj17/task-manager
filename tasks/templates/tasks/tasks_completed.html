@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<main class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-4 py-5">
+      <h1 class="text-center">
+        Tasks Completed
+      </h1>
+      <ul class="list-group">
+        {% for task in tasks %}
+        <li class="list-group-item ">
+          <div class="d-flex">
+            <div class="p-2 flex-grow-1">
+                <a class="text-decoration-none" href="{% url 'task_detail' task.id %}">
+                {% if task.important == True %} 
+                  <h1 class=" fw-bold text-danger">{{task.title}} {% if task.datecompleted %} ✅ {% endif %}</h1>
+                {% else %}
+                  <h1 class=" fw-bold text-dark">{{task.title}}   {% if task.datecompleted %} ✅ {% endif %}</h1>
+                {% endif %} 
+                </a>
+              <h5>{{task.description}}</h5>
+              <h6>{{task.datecompleted | date:'M j Y:i'}}</h6>
+              <!-- <p class="text-secondary">Project: {{task.project.name}}</p> -->
+            </div>
+            <div class="d-flex justify-content-end align-items-center p-2">
+              {% if task.datecompleted  %}
+              {% else %}
+              <button type="button" class="btn btn-success">Success</button>
+              <button type="button" class="btn btn-danger">Delete</button>
+              {% endif %} 
+            </div>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</main>
+  
+{% endblock %}

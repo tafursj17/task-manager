@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Task
+from .models import Task, Note
 
 
 class CreateNewTask(forms.ModelForm):
@@ -13,5 +13,7 @@ class CreateNewTask(forms.ModelForm):
             'important': forms.CheckboxInput(attrs={'class':'form-check-input m-auto'}), 
         }
 
-class CreateNewProject(forms.Form):
-    name = forms.CharField(label='Nombre de Proyecto', max_length=200)
+class CreateNewNote(forms.ModelForm):
+    class Meta:
+        model = Note
+        fields = ['description']
