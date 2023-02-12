@@ -35,6 +35,23 @@
                         </button>
                     </form>
                 </div>
+
+
+                <h3>Notas</h3>
+                {% for note in notes %}
+                <div>
+                    <ol class="list-group list-group-numbered">
+                        <a class="text-decoration-none" href="{% url 'note_detail' task.id note.id %}">
+                            <li class="list-group-item">{{ note.description }}</li>
+                        </a>
+                    </ol>
+                </div>
+                {% endfor %}
+                <div>
+                    <a class="text-decoration-none" href="{% url 'create_note' task.id %}">
+                        <button type="button" class="btn btn-info">Add Note</button>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

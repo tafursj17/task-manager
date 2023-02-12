@@ -20,6 +20,7 @@ class Task(models.Model):
 class Note(models.Model):
     description = models.TextField(blank=True)
     task = models.ForeignKey(Task, on_delete=models.CASCADE)
+    
     created = models.DateTimeField(auto_now=True)
 
     def __str__(self):

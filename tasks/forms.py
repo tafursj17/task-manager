@@ -16,4 +16,4 @@ class CreateNewTask(forms.ModelForm):
 class CreateNewNote(forms.ModelForm):
     class Meta:
         model = Note
-        fields = ['description']
+        fields = ['description',]

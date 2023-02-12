@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Hello</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    {{form}}
+    <div class="d-flex justify-content-between pt-2">
+    <button class="btn btn-primary">
+        Update
+    </button>
+</form>
+
+
+
+{% endblock %}

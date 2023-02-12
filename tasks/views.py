@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from .models import Task
+from .models import Task, Note
 from django.shortcuts import get_object_or_404, render, redirect
 from .forms import CreateNewTask, CreateNewNote
 from django.contrib import messages
@@ -28,7 +28,6 @@ def create_task(request):
     if request.method == 'GET':
         return render(request, 'tasks/create_task.html', {
         'form': CreateNewTask ,
-        'note' : CreateNewNote
     })
     else:
         form = CreateNewTask(request.POST)
@@ -43,9 +42,11 @@ def task_detail(request, task_id):
     if request.method == 'GET':
         task = Task.objects.get(pk=task_id, user=request.user)
         form = CreateNewTask(instance=task)
+        notes = Note.objects.filter(task = task_id)
         return render(request, 'tasks/task_detail.html',{
             'task': task,
-            'form': form
+            'form': form,
+            'notes': notes
         })
     else:
         task = Task.objects.get(pk=task_id,  user=request.user)
@@ -71,3 +72,50 @@ def delete_task(request, task_id):
         messages.success(request, 'Tarea Eliminada con exitó')
         return redirect('tasks')
 
+
+@login_required
+def create_note(request, task_id):
+    if request.method == 'GET':
+        form = CreateNewNote(request.POST)
+        return render(request, 'tasks/create_note.html',{
+        'form': form,
+        })
+    else:
+        form = CreateNewNote(request.POST)
+        if form.is_valid():
+            new_comment = form.save(commit=False)
+            new_comment.task = Task.objects.get(pk=task_id)
+            messages.success(request, 'Nota Creada con exitó')
+            new_comment.save()
+        return redirect(f'/tasks/{task_id}/')
+    
+
+@login_required
+def note_detail(request, task_id, note_id):
+    if request.method == 'GET':
+        task = Task.objects.get(pk=task_id)
+        note = Note.objects.get(pk=note_id)
+        form = CreateNewNote(instance=note)
+        return render(request, 'tasks/note_detail.html',{
+            'note': note,
+            'form': form,
+            'task': task
+        })
+    else:
+        task = Task.objects.get(pk=task_id)
+        note = Note.objects.get(pk=note_id)
+        form = CreateNewNote(request.POST, instance=note)
+        messages.success(request, 'Nota Actualizada con exitó')
+        form.save()
+        return redirect(f'/tasks/{task_id}/')
+
+@login_required
+def delete_note(request, task_id, note_id):
+    task = Task.objects.get(pk=task_id)
+    note = Note.objects.get(pk=note_id)
+    if request.method == 'POST':
+        note.delete()
+        messages.success(request, 'Nota Eliminada con exitó')
+        return redirect(f'/tasks/{task_id}/')
+
+    
