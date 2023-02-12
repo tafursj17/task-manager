@@ -6,8 +6,8 @@
     <div class="row">
         <div class="col-md-4 offset-md-4 mt-5 ">
             <div class="card card-body">
-                <h1>Task Detail</h1>
-                <h3>
+                <h1 class="display-2 text-center"> <strong>Task Detail</strong></h1>
+                <h3 class="text-capitalize">
                     {{ task.title }} {% if task.datecompleted %} ✅ {% elif task.datecompleted is null %} ⏱️ {% endif %}
                 </h3>
                 
@@ -36,8 +36,15 @@
                     </form>
                 </div>
 
-
-                <h3>Notas</h3>
+            </div>
+        </div>
+    </div>
+    <!-- Notas -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 offset-md-4 mt-3">
+                <div class="card card-body">
+                    <h3>Notas</h3>
                 {% for note in notes %}
                 <div>
                     <ol class="list-group list-group-numbered">
@@ -47,15 +54,15 @@
                     </ol>
                 </div>
                 {% endfor %}
-                <div>
+                <div class="pt-2">
                     <a class="text-decoration-none" href="{% url 'create_note' task.id %}">
                         <button type="button" class="btn btn-info">Add Note</button>
                     </a>
+                </div>
                 </div>
             </div>
         </div>
     </div>
 
-    
 
 {% endblock %}

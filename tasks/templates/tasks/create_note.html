@@ -1,17 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Hello</h1>
-
-<form method="POST">
-    {% csrf_token %}
-    {{form}}
-    <div class="d-flex justify-content-between pt-2">
-    <button class="btn btn-primary">
-        Update
-    </button>
-</form>
 
 
+
+<main class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4 mt-5">
+            <form method="POST" class="card card-body">
+                <h1 class="display-2 text-center">Create Note</h1>
+                {% csrf_token %}
+                {{form}}
+                <button class="btn btn-primary mt-2">
+                    Update
+                </button>
+            </form>
+        </div>
+    </div>
+
+</main>
 
 {% endblock %}

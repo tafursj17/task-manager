@@ -2,26 +2,39 @@
 
 {% block content %}
 
-<h1>Note Detail</h1>
 
-<h3>
-    {{ note.description }}
-</h3>
+<main class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4 mt-5">
+            <div class="card card-body">
 
-<form method="POST">
-    {% csrf_token %}
-    {{form}}
-    <div class="d-flex justify-content-between pt-2">
-    <button class="btn btn-primary">
-        Update
-    </button>
-</form>
+                <h1 class="display-2 text-center">Note Detail</h1>
 
-<form action="{% url 'delete_note' task.id note.id %}"  method="POST">
-    {% csrf_token %}
-    <button class="btn btn-danger">
-        Delete
-    </button>
-</form>
+                <h4>
+                    {{ note.description }}
+                </h4>
+
+                <div class="">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{form}}
+                        <div class="d-flex justify-content-between pt-2">
+                        <button class="btn btn-primary">
+                            Update
+                        </button>
+                    </form>
+                    
+                    <form action="{% url 'delete_note' task.id note.id %}"  method="POST">
+                        {% csrf_token %}
+                        <button class="btn btn-danger">
+                            Delete
+                        </button>
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</main>
 
 {% endblock %}

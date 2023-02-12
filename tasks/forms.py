@@ -17,3 +17,6 @@ class CreateNewNote(forms.ModelForm):
     class Meta:
         model = Note
         fields = ['description',]
+        widgets = {
+            'description': forms.Textarea(attrs={'class':'form-control', 'placeholder':'Escriba una descripción', 'required':'required'}),
+            }

@@ -18,7 +18,7 @@ class Task(models.Model):
         return self.title 
 
 class Note(models.Model):
-    description = models.TextField(blank=True)
+    description = models.TextField(null=True)
     task = models.ForeignKey(Task, on_delete=models.CASCADE)
     
     created = models.DateTimeField(auto_now=True)
