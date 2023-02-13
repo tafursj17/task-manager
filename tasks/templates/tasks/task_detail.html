@@ -5,10 +5,10 @@
 <main class="container">
     <div class="row">
         <div class="col-md-4 offset-md-4 mt-5 ">
-            <div class="card card-body">
-                <h1 class="display-2 text-center"> <strong>Task Detail</strong></h1>
+            <div class="card card-body shadow mb-3 bg-body-tertiary rounded">
+                <h1 class="display-2 text-center">Task Detail</h1>
                 <h3 class="text-capitalize">
-                    {{ task.title }} {% if task.datecompleted %} ✅ {% elif task.datecompleted is null %} ⏱️ {% endif %}
+                    {{ task.title }} {% if task.datecompleted %} <i class="fa-regular fa-circle-check fa-bounce" style="color:green"></i> {% elif task.datecompleted is null %} <i class="fa-regular fa-clock fa-fade" style="color: red;"></i> {% endif %}
                 </h3>
                 
                 <form method="POST">
@@ -39,17 +39,26 @@
             </div>
         </div>
     </div>
+
+
     <!-- Notas -->
     <div class="container">
         <div class="row">
-            <div class="col-md-4 offset-md-4 mt-3">
-                <div class="card card-body">
+            <div class="col-md-4 offset-md-4">
+                <div class="card card-body  shadow p-3 mb-3 bg-body-tertiary rounded">
                     <h3>Notas</h3>
                 {% for note in notes %}
                 <div>
                     <ol class="list-group list-group-numbered">
                         <a class="text-decoration-none" href="{% url 'note_detail' task.id note.id %}">
-                            <li class="list-group-item">{{ note.description }}</li>
+                            <div class="d-flex justify-content-between">
+                                <div class="flex-fill">
+                                    <li class="list-group-item">{{ note.description }}</li>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <i class=" fa-regular fa-pen-to-square"  style="color: green;"></i>
+                                </div>   
+                            </div>
                         </a>
                     </ol>
                 </div>

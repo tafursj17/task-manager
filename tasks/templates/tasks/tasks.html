@@ -8,20 +8,20 @@
       <h1 class="text-center display-2">
         Tasks Pending
       </h1>
-      <ul class="list-group">
+      <ul class="list-group shadow mb-3 bg-body-tertiary rounded">
         {% for task in tasks %}
         <li class="list-group-item ">
           <div class="d-flex">
             <div class="p-2 flex-grow-1">
                 <a class="text-decoration-none" href="{% url 'task_detail' task.id %}">
                 {% if task.important == True %} 
-                  <h1 class=" fw-bold text-danger">{{task.title}} {% if task.datecompleted %} ✅ {% endif %}</h1>
+                  <h3 class=" fw-bold text-danger text-capitalize">{{task.title}} {% if task.datecompleted %} ✅ {% endif %}</h3>
                 {% else %}
-                  <h1 class=" fw-bold text-dark">{{task.title}}   {% if task.datecompleted %} ✅ {% endif %}</h1>
+                  <h3 class=" text-dark text-capitalize">{{task.title}}   {% if task.datecompleted %} ✅ {% endif %}</h3>
                 {% endif %} 
                 </a>
-              <h5>{{task.description}}</h5>
-              <h6>{{task.datecompleted | date:'M j Y:i'}}</h6>
+              <h7>{{task.description}}</h7>
+              <h8>{{task.datecompleted | date:'M j Y:i'}}</h8>
             </div>
             <div class="d-flex justify-content-end align-items-center p-2">
               {% if task.datecompleted  %}
