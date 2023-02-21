@@ -20,9 +20,9 @@
                   <h3 class="text-dark text-capitalize">{{task.title}}   {% if task.datecompleted %} <i class="fa-regular fa-circle-check " style="color:green"></i> {% endif %}</h3>
                 {% endif %} 
                 </a>
-  
-              <h7>{{task.description}}</h7>
-              <h8>{{task.datecompleted | date:'M j Y:i'}}</h8>
+              
+              <h6>{{task.description}}</h6>
+              <p>{{task.datecompleted | date:'M j Y:i'}}</p>
               <!-- <p class="text-secondary">Project: {{task.project.name}}</p> -->
             </div>
             <div class="d-flex justify-content-end align-items-center p-2">
