@@ -2,13 +2,57 @@
 
 {% block content %}
 <main class="container py-5">
-        <h1>
-            Index
+        <h1 class="text-center display-2">
+            Home
         </h1>
-        <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem mollitia deleniti neque magni animi reiciendis accusantium dolorum inventore perspiciatis maxime pariatur provident velit aliquid illum ab qui, est blanditiis quia.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga quam adipisci hic maiores velit in dolor sit vitae molestiae, dolore expedita aut tempora sunt cupiditate, ex perferendis! Maxime, ex adipisci!
-        </p>
+        
+        <div class="row pt-1">
+            <div class="col-sm-12 mb-3 mb-sm-0 pt-1">
+                <div class="card text-center">
+                    <div class="text-center">
+                        <span style="font-size: 48px; color: green;">
+                            <i class="fa-regular fa-square-plus fa-beat" style="--fa-animation-duration: 2s;"></i>
+                          </span>
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title">Crear Tarea</h5>
+                      <p class="card-text">El sistema permite crear tareas al dirigirnos a Create Task,  nos dirige a un formulario en el cual debemos diligenciar los campos: Title, ingrese el título de la tarea; Description, ingrese la descripción de la tarea; Importante, en este campo marque solo si es una tarea importante.</p>
+                        <a href="{% url 'create_task' %}" class="btn btn-primary">Create Task</a>
+                    </div>
+                  </div>
+            </div>
+
+            <div class="col-sm-6 mb-3  mt-3 mb-sm-0">
+                <div class="card text-center">
+                    <div class="text-center">
+                        <span style="font-size: 48px; color: red;">
+                            <i class="fa-solid fa-list fa-beat" style="--fa-animation-duration: 2s;"></i>
+                          </span>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Tareas Pendientes</h5>
+                        <p class="card-text">Luego de crear tareas, podremos observarlas al dirigirnos a Tasks. Encontraremos las tareas creadas con: su título; descripción; importancia, si es importante se mostrará de color rojo y si no lo es se mostrará de color negro.</p>
+                        <a href="{% url 'tasks' %}" class="btn btn-primary">Tasks Pendings</a>
+                    </div>
+                  </div>
+            </div>
+
+            <div class="col-sm-6 mb-3 mt-3 mb-sm-0">
+                <div class="card">
+                    <div class="text-center">
+                        <span style="font-size: 48px; color: Dodgerblue;">
+                            <i class="fa-regular fa-square-check fa-beat" style="--fa-animation-duration: 2s;" ></i>
+                          </span>
+                    </div>
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Tareas Completadas</h5>
+                        <p class="card-text">Encontraremos las tareas completadas con: su título; descripción; importancia, si es importante se mostrará de color rojo y si no lo es se mostrara de color negro; fecha completada, se podrá visualizar la fecha en que fue completada la tarea.</p>
+                        <a href="{% url 'tasks_completed' %}" class="btn btn-primary">Tasks Completed</a>
+                    </div>
+                  </div>
+            </div>
+          </div>
+
 </main>
 
 {% endblock %}

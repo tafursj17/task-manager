@@ -1,0 +1,12 @@
+[Unit]
+Description=Description
+After=network.target
+
+[Service]
+User=tafur
+Group=www-data
+WorkingDirectory=/home/tafur/project/project_codigofacilito
+ExecStart=/home/tafur/project/project_codigofacilito/env/bin/gunicorn --workers 3 --bind unix:project_codigofacilito.sock project_codigofacilito.wsgi
+
+[Install]
+WantedBy=multi-user.target
