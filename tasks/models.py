@@ -9,13 +9,11 @@ class Task(models.Model):
     datecompleted = models.DateTimeField(null=True, blank=True)
     created = models.DateTimeField(auto_now=True)
 
-
-
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     # project = models.ForeignKey(Project, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.title 
+        return self.title
 
 class Note(models.Model):
     description = models.TextField(null=True)
